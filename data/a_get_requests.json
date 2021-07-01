@@ -1,0 +1,9 @@
+{
+  "page[number]": 1,
+  "page[size]": 25,
+  "include": "user",
+  "include": "balanceSnapshots",
+  "include": "balanceSnapshots.balanceType",
+  "include": "balanceDifference",
+  "sort": "-createdAt"
+}

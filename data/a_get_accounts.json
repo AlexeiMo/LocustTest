@@ -1,0 +1,7 @@
+{
+  "include": "user",
+  "include": "type",
+  "page[number]": 1,
+  "page[size]": 25,
+  "sort": "-createdAt"
+}

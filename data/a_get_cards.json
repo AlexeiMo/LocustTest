@@ -1,0 +1,8 @@
+{
+  "include": "cardType",
+  "include": "user",
+  "include": "cardType.format",
+  "page[number]": 1,
+  "page[size]": 25,
+  "sort": "-createdAt"
+}

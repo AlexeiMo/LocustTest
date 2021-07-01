@@ -1,0 +1,80 @@
+{
+  "host": "https://api-loadtest-01.ebanq-qa.com",
+  "authorization": {
+    "host": "/users/public/v1/auth/signin",
+    "user": {
+      "email": "",
+      "password": ""
+    },
+    "admin": {
+      "email": "",
+      "password": ""
+    }
+  },
+  "admin": {
+    "get_accounts": {
+      "endpoint": "/accounts/private/v1/admin/accounts",
+      "filename": "a_get_accounts.json"
+    },
+    "get_account_by_id": {
+      "endpoint": "/accounts/private/v1/accounts/",
+      "account_id": "723"
+    },
+    "get_admin_group": {
+      "endpoint": "/permissions/private/v1/admin/group"
+    },
+    "get_admin_messages": {
+      "endpoint": "/messages/private/v1/admin/messages",
+      "filename": "a_get_admin_messages.json"
+    },
+    "get_permission": {
+      "endpoint": "/permissions/private/v1/admin/permission",
+      "filename": "a_get_permission.json"
+    },
+    "get_requests": {
+      "endpoint": "/accounts/private/v1/requests",
+      "filename": "a_get_requests.json"
+    },
+    "get_cards": {
+      "endpoint": "/accounts/private/v1/cards",
+      "filename": "a_get_cards.json"
+    },
+    "get_registration_requests": {
+      "endpoint": "/users/private/v1/registration-requests",
+      "filename": "a_get_registration_requests.json"
+    },
+    "get_revenue_accounts": {
+      "endpoint": "/accounts/private/v1/revenue-accounts",
+      "filename": "a_get_revenue_accounts.json"
+    },
+    "get_user_groups": {
+      "endpoint": "/users/private/v1/user-groups",
+      "filename": "a_get_user_groups.json"
+    },
+    "get_short_users": {
+      "endpoint": "/users/private/v1/short-users",
+      "filename": "a_get_short_users.json"
+    },
+    "get_reports_interests_export": {
+      "endpoint": "/reports/private/v1/admin/system/interests/export"
+    },
+    "get_reports_interests": {
+      "endpoint": "/reports/private/v1/admin/system/interests",
+      "filename": "a_get_reports_interests.json"
+    },
+    "get_system_balance_export": {
+      "endpoint": "/reports/private/v1/admin/system/balance/export"
+    },
+    "get_system_balance": {
+      "endpoint": "/reports/private/v1/admin/system/balance",
+      "filename": "a_get_system_balance.json"
+    },
+    "get_system_manual_transaction": {
+      "endpoint": "/reports/private/v1/admin/system/manual-transaction",
+      "filename": "a_get_system_manual_transaction.json"
+    },
+    "get_system_maturity_export": {
+      "endpoint": "/reports/private/v1/admin/system/maturity/export"
+    }
+  }
+}

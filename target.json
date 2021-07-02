@@ -4,7 +4,8 @@
     "host": "/users/public/v1/auth/signin",
     "user": {
       "email": "",
-      "password": ""
+      "password": "",
+      "user_id": "a0451605-0907-4450-a676-d99f124725b5"
     },
     "admin": {
       "email": "",
@@ -75,6 +76,102 @@
     },
     "get_system_maturity_export": {
       "endpoint": "/reports/private/v1/admin/system/maturity/export"
+    },
+    "get_system_maturity": {
+      "endpoint": "/reports/private/v1/admin/system/maturity",
+      "filename": "a_get_system_maturity.json"
+    },
+    "get_system_overview_export": {
+      "endpoint": "/reports/private/v1/admin/system/overview/export"
+    },
+    "get_system_overview": {
+      "endpoint": "/reports/private/v1/admin/system/overview",
+      "filename": "a_get_system_overview.json"
+    },
+    "patch_request_by_id": {
+      "endpoint": "/accounts/private/v1/admin/requests/",
+      "request_id": "861",
+      "filename": "a_patch_request_by_id.json"
+    },
+    "post_owt_request": {
+      "endpoint": "/accounts/private/v1/admin/owt-requests/user/",
+      "filename": "a_post_owt_request.json"
+    },
+    "get_user_sort": {
+      "endpoint": "/users/private/v1/users",
+      "filename": "a_get_user_sort.json"
+    },
+    "get_request_by_id": {
+      "endpoint": "/accounts/private/v1/requests/",
+      "request_id": "866"
+    },
+    "post_owt_request_preview": {
+      "endpoint": "/accounts/private/v1/admin/owt-requests/preview/user/",
+      "filename": "a_post_owt_request_preview.json"
+    },
+    "post_tba_request": {
+      "endpoint": "/accounts/private/v1/admin/tba-requests/user/",
+      "filename": "a_post_tba_request.json"
+    },
+    "post_tba_request_preview": {
+      "endpoint": "/accounts/private/v1/admin/tba-requests/preview/user/",
+      "filename": "a_post_tba_request_preview.json"
+    },
+    "post_tbu_request": {
+      "endpoint": "/accounts/private/v1/admin/tbu-requests/user/",
+      "filename": "a_post_tbu_request.json"
+    },
+    "post_tbu_request_preview": {
+      "endpoint": "/accounts/private/v1/admin/tbu-requests/preview/user/",
+      "filename": "a_post_tbu_request_preview.json"
+    },
+    "post_ca_request": {
+      "endpoint": "/accounts/private/v1/admin/ca-requests",
+      "filename": "a_post_ca_request.json"
+    },
+    "post_ca_request_preview": {
+      "endpoint": "/accounts/private/v1/admin/ca-requests/preview",
+      "filename": "a_post_ca_request_preview.json"
+    },
+    "post_da_request": {
+      "endpoint": "/accounts/private/v1/admin/da-requests",
+      "filename": "a_post_da_request.json"
+    },
+    "post_da_request_preview": {
+      "endpoint": "/accounts/private/v1/admin/da-requests/preview",
+      "filename": "a_post_da_request_preview.json"
+    },
+    "post_dra_request": {
+      "endpoint": "/accounts/private/v1/admin/dra-requests",
+      "filename": "a_post_dra_request.json"
+    },
+    "post_dra_request_preview": {
+      "endpoint": "/accounts/private/v1/admin/dra-requests/preview",
+      "filename": "a_post_dra_request_preview.json"
+    },
+    "post_messages_send_to_all": {
+      "endpoint": "/messages/private/v1/admin/message/to/all",
+      "filename": "a_post_messages_send_to_all.json"
+    },
+    "post_messages_send_to_group": {
+      "endpoint": "/messages/private/v1/admin/message/to/group",
+      "filename": "a_post_messages_send_to_group.json"
+    },
+    "post_messages_send_to_users": {
+      "endpoint": "/messages/private/v1/admin/message/to/users",
+      "filename": "a_post_messages_send_to_users.json"
+    },
+    "get_transfer_requests_export": {
+      "endpoint": "/accounts/private/v1/admin/export/transfer-requests",
+      "filename": "a_get_transfer_requests_export.json"
+    },
+    "get_transactions_export": {
+      "endpoint": "/reports/private/v1/admin/system/transaction/export",
+      "filename": "a_get_transactions_export.json"
+    },
+    "get_reports_transaction": {
+      "endpoint": "/reports/private/v1/admin/system/transaction",
+      "filename": "a_get_reports_transaction.json"
     }
   }
 }

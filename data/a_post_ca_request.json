@@ -1,0 +1,7 @@
+{
+  "amount": "0.01",
+  "description": "test",
+  "debitFromRevenueAccount": false,
+  "applyIwtFee": false,
+  "accountId": 2908
+}

@@ -1,0 +1,24 @@
+{
+  "outgoingAmount": "0.01",
+  "incomingAmount": "0.01",
+  "description": "",
+  "selectedUser": {
+    "ROLE_ADMIN": "admin",
+    "ROLE_ROOT": "root",
+    "company_name": "",
+    "created_at": "2021-05-25T05:39:00Z",
+    "email": "test@test.com",
+    "first_name": "Test",
+    "is_corporate": false,
+    "last_login_at": "2021-06-28T09:32:04Z",
+    "last_name": "Test",
+    "status": "active",
+    "uid": "a0451605-0907-4450-a676-d99f124725b5",
+    "user_group_id": null,
+    "username": "Test",
+    "label": "Test Test (Test)"
+  },
+  "accountIdFrom": 3534,
+  "accountIdTo": 3531,
+  "rateLockInToken": "cc653b28-a6cc-49cb-af3c-fbd83d239df8"
+}

@@ -1,0 +1,9 @@
+{
+  "outgoingAmount": "0.01",
+  "incomingAmount": "0.01",
+  "description": "",
+  "accountIdFrom": 3531,
+  "accountNumberTo": "EUR471953992",
+  "userName": "fines@vallettapay.com",
+  "rateLockInToken": "456a8d55-c7e5-4cfa-956c-5b1e7f0b3fff"
+}

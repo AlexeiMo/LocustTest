@@ -1,0 +1,7 @@
+{
+  "page[number]": 1,
+  "page[size]": 3000,
+  "filters[withAccounts]": 1,
+  "filters[isVisible]": 1,
+  "filters[status]": "executed"
+}

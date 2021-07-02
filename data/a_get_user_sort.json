@@ -1,0 +1,6 @@
+{
+  "sort": "-created_at",
+  "filter[role_name]": "client",
+  "page": 1,
+  "limit": 25
+}

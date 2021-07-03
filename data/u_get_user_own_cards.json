@@ -1,0 +1,4 @@
+{
+  "include": "cardType,cardType.format",
+  "filter[status]": "active"
+}

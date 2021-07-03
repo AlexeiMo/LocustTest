@@ -1,0 +1,5 @@
+{
+  "sort": "type",
+  "filter[active]": "true",
+  "page[size]": 0
+}

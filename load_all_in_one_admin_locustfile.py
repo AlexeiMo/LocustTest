@@ -1,12 +1,12 @@
 import os
-from pprint import pprint
 
 from locust import HttpUser, between, task, TaskSet
 import urllib3
 
 from helpers.json_helper import read_json
 from helpers.auth_helper import AuthorizationHelper
-from helpers.requests_helper import send_get_request, send_patch_request, send_post_request
+from helpers.requests_helper import send_get_request, send_patch_request, send_post_request, import_csv_file
+from helpers.csv_helper import create_new_import_requests_file
 
 urllib3.disable_warnings()
 
@@ -194,8 +194,7 @@ class AdminBehavior(TaskSet):
         request_id = target["admin"]["get_request_by_id"]["request_id"]
         endpoint += request_id
         name = "/REQUEST BY ID"
-        rs = send_get_request(self.client, endpoint, name)
-        pprint(rs)
+        send_get_request(self.client, endpoint, name)
 
     # @task
     def post_owt_request_preview(self):
@@ -324,8 +323,36 @@ class AdminBehavior(TaskSet):
         endpoint = target["admin"]["get_reports_transaction"]["endpoint"]
         name = "/TRANSACTIONS REPORT"
         filename = target["admin"]["get_reports_transaction"]["filename"]
-        rs = send_get_request(self.client, endpoint, name, filename)
-        pprint(rs)
+        send_get_request(self.client, endpoint, name, filename)
+
+    # @task   # 400
+    def get_system_manual_transaction_export(self):
+        endpoint = target["admin"]["get_system_manual_transaction_export"]["endpoint"]
+        name = "/SYSTEM MANUAL TRANSACTION EXPORT"
+        send_get_request(self.client, endpoint, name)
+
+    # @task   # 500
+    def post_accounts_csv_import_request(self):
+        endpoint = target["admin"]["post_accounts_csv_import_request"]["endpoint"]
+        filename = target["admin"]["post_accounts_csv_import_request"]["filename"]
+        name = "/ACCOUNTS CSV IMPORT"
+        import_csv_file(self.client, endpoint, name, filename)
+
+    # @task
+    def post_accounts_csv_update(self):
+        endpoint = target["admin"]["get_pending_requests"]["endpoint"]
+        name = "/PENDING REQUESTS"
+        filename = target["admin"]["get_pending_requests"]["filename"]
+        request_id = send_get_request(self.client, endpoint, name, filename)["data"][0]["id"]
+        status = "Executed"
+
+        endpoint = target["admin"]["post_accounts_csv_update"]["endpoint"]
+        name = "/ACCOUNTS CSV UPDATE"
+        filename = target["admin"]["post_accounts_csv_update"]["filename"]
+        filename = create_new_import_requests_file(filename, request_id, status)
+        import_csv_file(self.client, endpoint, name, filename)
+
+    # не хватает 4
 
 
 class LoadTestUser(HttpUser):

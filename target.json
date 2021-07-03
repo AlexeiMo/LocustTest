@@ -172,6 +172,99 @@
     "get_reports_transaction": {
       "endpoint": "/reports/private/v1/admin/system/transaction",
       "filename": "a_get_reports_transaction.json"
+    },
+    "get_system_manual_transaction_export": {
+      "endpoint": "/reports/private/v1/admin/system/manual-transaction/export"
+    },
+    "post_accounts_csv_import_request": {
+      "endpoint": "/accounts/private/v1/admin/requests/csv/import",
+      "filename": "a_import_transactions"
+    },
+    "get_pending_requests": {
+      "endpoint": "/accounts/private/v1/requests",
+      "filename": "a_get_pending_requests.json"
+    },
+    "post_accounts_csv_update": {
+      "endpoint": "/accounts/private/v1/admin/requests/csv/update",
+      "filename": "a_import_transfer_requests"
+    }
+  },
+  "user": {
+    "tans": {
+      "filename": "u_tans.csv"
+    },
+    "get_article": {
+      "endpoint": "/news/private/v1/article",
+      "filename": "u_get_article.json"
+    },
+    "get_currencies": {
+      "endpoint": "/currencies/private/v1/currencies",
+      "filename": "u_get_currencies.json"
+    },
+    "get_me": {
+      "endpoint": "/users/private/v1/auth/me"
+    },
+    "get_modules": {
+      "endpoint": "/settings/private/v1/config/regional/modules"
+    },
+    "get_user_messages": {
+      "endpoint": "/messages/private/v1/messages",
+      "filename": "u_get_user_messages.json"
+    },
+    "get_user_notifications_user_settings": {
+      "endpoint": "/notifications/private/v1/user-settings"
+    },
+    "get_user_own_cards": {
+      "endpoint": "/accounts/private/v1/own-cards",
+      "filename": "u_get_user_own_cards.json"
+    },
+    "get_user_reports_balance": {
+      "endpoint": "/reports/private/v1/balance",
+      "filename": "u_get_user_reports_balance.json"
+    },
+    "get_user_requests": {
+      "endpoint": "/accounts/private/v1/user/requests",
+      "filename": "u_get_user_requests.json"
+    },
+    "get_user_transaction_by_id": {
+      "endpoint": "/accounts/private/v1/user/transactions/",
+      "transaction_id": "152854",
+      "filename": "u_get_user_transaction_by_id.json"
+    },
+    "get_user_transactions": {
+      "endpoint": "/accounts/private/v1/user/transactions",
+      "filename": "u_get_user_transactions.json"
+    },
+    "post_cft_request": {
+      "endpoint": "/accounts/private/v1/cft-requests",
+      "filename": "u_post_cft_request.json"
+    },
+    "post_cft_request_preview": {
+      "endpoint": "/accounts/private/v1/cft-requests/preview",
+      "filename": "u_post_cft_request_preview.json"
+    },
+    "post_owt_request": {
+      "endpoint": "/accounts/private/v1/owt-requests",
+      "filename": "u_post_owt_request.json"
+    },
+    "post_user_messages": {
+      "endpoint": "/messages/private/v1/messages",
+      "filename": "u_post_user_messages.json"
+    },
+    "get_user_reports_account_export": {
+      "endpoint": "/reports/private/v1/account/export",
+      "filename": "u_get_user_reports_account_export.json"
+    },
+    "get_user_reports_balance_export": {
+      "endpoint": "/reports/private/v1/balance/export"
+    },
+    "get_user_reports_transaction_export": {
+      "endpoint": "/reports/private/v1/transaction/export",
+      "filename": "u_get_user_reports_transaction_export.json"
+    },
+    "get_user_reports_transaction": {
+      "endpoint": "/reports/private/v1/transaction",
+      "filename": "u_get_user_reports_transaction.json"
     }
   }
 }

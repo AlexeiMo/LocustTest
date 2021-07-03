@@ -38,3 +38,14 @@ def send_patch_request(session, url, request_name, filename, status_code=200):
             assert_status_code(response, status_code)
             if response.content:
                 return response.json()
+
+
+def import_csv_file(session, url, request_name, filename):
+    session.headers.update({"Content-Type": None})
+    content_type = "text/csv"
+    file_to_open = Path("data") / filename
+    with open(file_to_open, "rb") as file:
+        files = {"file": (filename, file, content_type)}
+        with session.post(url, files=files, name=request_name,
+                          verify=False, catch_response=True) as response:
+            assert_status_code(response)

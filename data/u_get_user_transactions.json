@@ -1,0 +1,7 @@
+{
+  "page[number]": 1,
+  "page[size]": 25,
+  "sort": "-statusChangedAt",
+  "filter[accountId]": 2907,
+  "filter[status:eq]": "pending"
+}

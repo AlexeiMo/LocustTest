@@ -1,5 +1,5 @@
 import os
-from pprint import  pprint
+from pprint import pprint
 
 from locust import HttpUser, between, task, TaskSet
 import urllib3
@@ -7,6 +7,8 @@ import urllib3
 from helpers.json_helper import read_json
 from helpers.auth_helper import AuthorizationHelper
 from helpers.requests_helper import send_get_request, send_patch_request, send_post_request
+from helpers.csv_helper import change_tan
+
 
 urllib3.disable_warnings()
 
@@ -53,7 +55,7 @@ class UserBehavior(TaskSet):
         name = "/MODULES"
         send_get_request(self.client, endpoint, name)
 
-    # @task   # 502
+    # @task
     def get_user_messages(self):
         endpoint = target["user"]["get_user_messages"]["endpoint"]
         name = "/USER MESSAGES"
@@ -108,8 +110,7 @@ class UserBehavior(TaskSet):
         endpoint = target["user"]["post_cft_request"]["endpoint"]
         name = "/CFT REQUEST"
         filename = target["user"]["post_cft_request"]["filename"]
-        rs = send_post_request(self.client, endpoint, name, filename)
-        pprint(rs)
+        send_post_request(self.client, endpoint, name, filename)
 
     # @task   # 403
     def post_cft_request_preview(self):
@@ -118,35 +119,61 @@ class UserBehavior(TaskSet):
         filename = target["user"]["post_cft_request_preview"]["filename"]
         send_post_request(self.client, endpoint, name, filename)
 
-    # @task   # дописать
+    # @task
     def post_owt_request(self):
         endpoint = target["user"]["post_owt_request"]["endpoint"]
         name = "/OWT REQUEST"
         filename = target["user"]["post_owt_request"]["filename"]
-        rs = send_post_request(self.client, endpoint, name, filename)
-        pprint(rs)
+        tan_filename = target["user"]["tans"]["filename"]
+        change_tan(self.client, filename, tan_filename)
+        send_post_request(self.client, endpoint, name, filename)
 
-    # @task   # дописать
+    # @task
     def post_owt_request_preview(self):
-        pass
+        endpoint = target["user"]["post_owt_request_preview"]["endpoint"]
+        name = "/OWT REQUEST PREVIEW"
+        filename = target["user"]["post_owt_request_preview"]["filename"]
+        tan_filename = target["user"]["tans"]["filename"]
+        change_tan(self.client, filename, tan_filename)
+        send_post_request(self.client, endpoint, name, filename)
 
-    # @task   # дописать
+    # @task
     def post_tba_request(self):
-        pass
+        endpoint = target["user"]["post_tba_request"]["endpoint"]
+        name = "/TBA REQUEST"
+        filename = target["user"]["post_tba_request"]["filename"]
+        tan_filename = target["user"]["tans"]["filename"]
+        change_tan(self.client, filename, tan_filename)
+        send_post_request(self.client, endpoint, name, filename)
 
-    # @task   # дописать
+    # @task
     def post_tba_request_preview(self):
-        pass
+        endpoint = target["user"]["post_tba_request_preview"]["endpoint"]
+        name = "/TBA REQUEST PREVIEW"
+        filename = target["user"]["post_tba_request_preview"]["filename"]
+        tan_filename = target["user"]["tans"]["filename"]
+        change_tan(self.client, filename, tan_filename)
+        send_post_request(self.client, endpoint, name, filename)
 
-    # @task   # дописать
+    # @task   # (400) CreditTo is not valid status (?)
     def post_tbu_request(self):
-        pass
+        endpoint = target["user"]["post_tbu_request"]["endpoint"]
+        name = "/TBU REQUEST"
+        filename = target["user"]["post_tbu_request"]["filename"]
+        tan_filename = target["user"]["tans"]["filename"]
+        change_tan(self.client, filename, tan_filename)
+        send_post_request(self.client, endpoint, name, filename)
 
-    # @task   # дописать
+    # @task
     def post_tbu_request_preview(self):
-        pass
+        endpoint = target["user"]["post_tbu_request_preview"]["endpoint"]
+        name = "/TBU REQUEST PREVIEW"
+        filename = target["user"]["post_tbu_request_preview"]["filename"]
+        tan_filename = target["user"]["tans"]["filename"]
+        change_tan(self.client, filename, tan_filename)
+        send_post_request(self.client, endpoint, name, filename)
 
-    # @task   # 502
+    # @task
     def post_user_messages(self):
         endpoint = target["user"]["post_user_messages"]["endpoint"]
         name = "/USER MESSAGES"

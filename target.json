@@ -178,7 +178,7 @@
     },
     "post_accounts_csv_import_request": {
       "endpoint": "/accounts/private/v1/admin/requests/csv/import",
-      "filename": "a_import_transactions"
+      "filename": "a_import_transactions.csv"
     },
     "get_pending_requests": {
       "endpoint": "/accounts/private/v1/requests",
@@ -246,6 +246,26 @@
     "post_owt_request": {
       "endpoint": "/accounts/private/v1/owt-requests",
       "filename": "u_post_owt_request.json"
+    },
+    "post_owt_request_preview": {
+      "endpoint": "/accounts/private/v1/owt-requests/preview",
+      "filename": "u_post_owt_request_preview.json"
+    },
+    "post_tba_request": {
+      "endpoint": "/accounts/private/v1/tba-requests",
+      "filename": "u_post_tba_request.json"
+    },
+    "post_tba_request_preview": {
+      "endpoint": "/accounts/private/v1/tba-requests/preview",
+      "filename": "u_post_tba_request_preview.json"
+    },
+    "post_tbu_request": {
+      "endpoint": "/accounts/private/v1/tbu-requests",
+      "filename": "u_post_tbu_request.json"
+    },
+    "post_tbu_request_preview": {
+      "endpoint": "/accounts/private/v1/tbu-requests/preview",
+      "filename": "u_post_tbu_request_preview.json"
     },
     "post_user_messages": {
       "endpoint": "/messages/private/v1/messages",

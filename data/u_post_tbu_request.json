@@ -1,0 +1,13 @@
+{
+  "outgoingAmount": "1",
+  "incomingAmount": "1",
+  "description": "test",
+  "tanValue": "2273720992",
+  "chooseTemplateSelect": null,
+  "saveAsTemplate": false,
+  "templateName": "",
+  "accountIdFrom": 3531,
+  "accountNumberTo": "EUR0003341466170006",
+  "userName": "finance@napoleonentertainment.com",
+  "rateLockInToken": "1fa9a366-24da-463a-bf1e-89d1b7209653"
+}

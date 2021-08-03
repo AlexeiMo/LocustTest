@@ -1,4 +1,5 @@
 import os
+from pprint import pprint
 
 from locust import HttpUser, between, task, TaskSet
 import urllib3
@@ -104,40 +105,40 @@ class AdminBehavior(TaskSet):
         filename = target["admin"]["get_short_users"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    # @task   ## 502
+    # @task   ## no response, but status code is OK
     def get_reports_interests_export(self):
         endpoint = target["admin"]["get_reports_interests_export"]["endpoint"]
         name = "/REPORTS INTERESTS EXPORT"
         send_get_request(self.client, endpoint, name)
 
-    # @task   ## 502
+    # @task
     def get_reports_interests(self):
         endpoint = target["admin"]["get_reports_interests"]["endpoint"]
         name = "/REPORTS INTERESTS"
         filename = target["admin"]["get_reports_interests"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    # @task   ## 502
+    # @task   ## no response, but status code is OK
     def get_system_balance_export(self):
         endpoint = target["admin"]["get_system_balance_export"]["endpoint"]
         name = "/SYSTEM BALANCE EXPORT"
         send_get_request(self.client, endpoint, name)
 
-    # @task   ## 504, 502
+    # @task
     def get_system_balance(self):
         endpoint = target["admin"]["get_system_balance"]["endpoint"]
         name = "/SYSTEM BALANCE"
         filename = target["admin"]["get_system_balance"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    # @task   ## 502
+    # @task
     def get_system_manual_transaction(self):
         endpoint = target["admin"]["get_system_manual_transaction"]["endpoint"]
         name = "/SYSTEM MANUAL TRANSACTION"
         filename = target["admin"]["get_system_manual_transaction"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    # @task   ## 502
+    # @task   ## no response, but status code is OK
     def get_system_maturity_export(self):
         endpoint = target["admin"]["get_system_maturity_export"]["endpoint"]
         name = "/SYSTEM MATURITY EXPORT"
@@ -283,28 +284,28 @@ class AdminBehavior(TaskSet):
         filename = target["admin"]["post_dra_request_preview"]["filename"]
         send_post_request(self.client, endpoint, name, filename)
 
-    # @task   # 502
+    # @task   # 504
     def post_messages_send_to_all(self):
         endpoint = target["admin"]["post_messages_send_to_all"]["endpoint"]
         name = "/MESSAGES SENT TO ALL"
         filename = target["admin"]["post_messages_send_to_all"]["filename"]
         send_post_request(self.client, endpoint, name, filename)
 
-    # @task   # 502
+    # @task
     def post_messages_send_to_group(self):
         endpoint = target["admin"]["post_messages_send_to_group"]["endpoint"]
         name = "/MESSAGES SENT TO GROUP"
         filename = target["admin"]["post_messages_send_to_group"]["filename"]
         send_post_request(self.client, endpoint, name, filename)
 
-    # @task  # 502
+    # @task
     def post_messages_send_to_users(self):
         endpoint = target["admin"]["post_messages_send_to_users"]["endpoint"]
         name = "/MESSAGES SENT TO USERS"
         filename = target["admin"]["post_messages_send_to_users"]["filename"]
         send_post_request(self.client, endpoint, name, filename)
 
-    # @task   # 0
+    # @task   ## no response, but status code is OK
     def get_transfer_requests_export(self):
         endpoint = target["admin"]["get_transfer_requests_export"]["endpoint"]
         name = "/TRANSFER REQUESTS EXPORT"
@@ -318,7 +319,7 @@ class AdminBehavior(TaskSet):
         filename = target["admin"]["get_transactions_export"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    # @task   # 500
+    # @task
     def get_reports_transaction(self):
         endpoint = target["admin"]["get_reports_transaction"]["endpoint"]
         name = "/TRANSACTIONS REPORT"
@@ -331,7 +332,7 @@ class AdminBehavior(TaskSet):
         name = "/SYSTEM MANUAL TRANSACTION EXPORT"
         send_get_request(self.client, endpoint, name)
 
-    # @task   # 500
+    # @task
     def post_accounts_csv_import_request(self):
         endpoint = target["admin"]["post_accounts_csv_import_request"]["endpoint"]
         filename = target["admin"]["post_accounts_csv_import_request"]["filename"]

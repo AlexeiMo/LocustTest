@@ -29,67 +29,67 @@ class UserBehavior(TaskSet):
         )
         self.client.headers.update({"Content-Type": "application/json"})
 
-    # @task
+    @task
     def get_article(self):
         endpoint = target["user"]["get_article"]["endpoint"]
         name = "/ARTICLE"
         filename = target["user"]["get_article"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    # @task
+    @task
     def get_currencies(self):
         endpoint = target["user"]["get_currencies"]["endpoint"]
         name = "/CURRENCIES"
         filename = target["user"]["get_currencies"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    # @task
+    @task
     def get_me(self):
         endpoint = target["user"]["get_me"]["endpoint"]
         name = "/ME"
         send_get_request(self.client, endpoint, name)
 
-    # @task
-    def get_modules(self):
+    @task
+    def     _modules(self):
         endpoint = target["user"]["get_modules"]["endpoint"]
         name = "/MODULES"
         send_get_request(self.client, endpoint, name)
 
-    # @task
+    @task
     def get_user_messages(self):
         endpoint = target["user"]["get_user_messages"]["endpoint"]
         name = "/USER MESSAGES"
         filename = target["user"]["get_user_messages"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    # @task
+    @task
     def get_user_notifications_user_settings(self):
         endpoint = target["user"]["get_user_notifications_user_settings"]["endpoint"]
         name = "/USER NOTIFICATIONS USER SETTINGS"
         send_get_request(self.client, endpoint, name)
 
-    # @task
+    @task
     def get_user_own_cards(self):
         endpoint = target["user"]["get_user_own_cards"]["endpoint"]
         name = "/USER OWN CARDS"
         filename = target["user"]["get_user_own_cards"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    # @task
+    @task
     def get_user_reports_balance(self):
         endpoint = target["user"]["get_user_reports_balance"]["endpoint"]
         name = "/USER REPORTS BALANCE"
         filename = target["user"]["get_user_reports_balance"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    # @task
+    @task
     def get_user_requests(self):
         endpoint = target["user"]["get_user_requests"]["endpoint"]
         name = "/USER REQUESTS"
         filename = target["user"]["get_user_requests"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    # @task
+    @task
     def get_user_transaction_by_id(self):
         endpoint = target["user"]["get_user_transaction_by_id"]["endpoint"]
         transaction_id = target["user"]["get_user_transaction_by_id"]["transaction_id"]
@@ -98,28 +98,28 @@ class UserBehavior(TaskSet):
         filename = target["user"]["get_user_transaction_by_id"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    # @task
+    @task
     def get_user_transactions(self):
         endpoint = target["user"]["get_user_transactions"]["endpoint"]
         name = "/USER TRANSACTIONS"
         filename = target["user"]["get_user_transactions"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    # @task   # 403
+    @task   # ToDo: 403
     def post_cft_request(self):
         endpoint = target["user"]["post_cft_request"]["endpoint"]
         name = "/CFT REQUEST"
         filename = target["user"]["post_cft_request"]["filename"]
         send_post_request(self.client, endpoint, name, filename)
 
-    # @task   # 403
+    @task   # ToDo: 403
     def post_cft_request_preview(self):
         endpoint = target["user"]["post_cft_request_preview"]["endpoint"]
         name = "/CFT REQUEST PREVIEW"
         filename = target["user"]["post_cft_request_preview"]["filename"]
         send_post_request(self.client, endpoint, name, filename)
 
-    # @task
+    @task
     def post_owt_request(self):
         endpoint = target["user"]["post_owt_request"]["endpoint"]
         name = "/OWT REQUEST"
@@ -128,7 +128,7 @@ class UserBehavior(TaskSet):
         change_tan(self.client, filename, tan_filename)
         send_post_request(self.client, endpoint, name, filename)
 
-    # @task
+    @task
     def post_owt_request_preview(self):
         endpoint = target["user"]["post_owt_request_preview"]["endpoint"]
         name = "/OWT REQUEST PREVIEW"
@@ -137,7 +137,7 @@ class UserBehavior(TaskSet):
         change_tan(self.client, filename, tan_filename)
         send_post_request(self.client, endpoint, name, filename)
 
-    # @task
+    @task
     def post_tba_request(self):
         endpoint = target["user"]["post_tba_request"]["endpoint"]
         name = "/TBA REQUEST"
@@ -146,7 +146,7 @@ class UserBehavior(TaskSet):
         change_tan(self.client, filename, tan_filename)
         send_post_request(self.client, endpoint, name, filename)
 
-    # @task
+    @task
     def post_tba_request_preview(self):
         endpoint = target["user"]["post_tba_request_preview"]["endpoint"]
         name = "/TBA REQUEST PREVIEW"
@@ -155,7 +155,7 @@ class UserBehavior(TaskSet):
         change_tan(self.client, filename, tan_filename)
         send_post_request(self.client, endpoint, name, filename)
 
-    # @task   # (400) CreditTo is not valid status (?)
+    @task
     def post_tbu_request(self):
         endpoint = target["user"]["post_tbu_request"]["endpoint"]
         name = "/TBU REQUEST"
@@ -164,7 +164,7 @@ class UserBehavior(TaskSet):
         change_tan(self.client, filename, tan_filename)
         send_post_request(self.client, endpoint, name, filename)
 
-    # @task
+    @task
     def post_tbu_request_preview(self):
         endpoint = target["user"]["post_tbu_request_preview"]["endpoint"]
         name = "/TBU REQUEST PREVIEW"
@@ -173,34 +173,34 @@ class UserBehavior(TaskSet):
         change_tan(self.client, filename, tan_filename)
         send_post_request(self.client, endpoint, name, filename)
 
-    # @task
+    @task
     def post_user_messages(self):
         endpoint = target["user"]["post_user_messages"]["endpoint"]
         name = "/USER MESSAGES"
         filename = target["user"]["post_user_messages"]["filename"]
         send_post_request(self.client, endpoint, name, filename)
 
-    # @task   # 400
+    @task   #ToDO: 400
     def get_user_reports_account_export(self):
         endpoint = target["user"]["get_user_reports_account_export"]["endpoint"]
         name = "/USER REPORTS ACCOUNT EXPORT"
         filename = target["user"]["get_user_reports_account_export"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    # @task
+    @task
     def get_user_reports_balance_export(self):
         endpoint = target["user"]["get_user_reports_balance_export"]["endpoint"]
         name = "/USER REPORTS BALANCE EXPORT"
         send_get_request(self.client, endpoint, name)
 
-    # @task
+    @task
     def get_user_reports_transaction_export(self):
         endpoint = target["user"]["get_user_reports_transaction_export"]["endpoint"]
         name = "/USER REPORTS TRANSACTION EXPORT"
         filename = target["user"]["get_user_reports_transaction_export"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    # @task
+    @task
     def get_user_reports_transaction(self):
         endpoint = target["user"]["get_user_reports_transaction"]["endpoint"]
         name = "/USER REPORTS TRANSACTION"
@@ -211,7 +211,7 @@ class UserBehavior(TaskSet):
 
 
 class LoadTestUser(HttpUser):
-    wait_time = between(1, 2)
+    wait_time = between(0.6, 0.8)
     host = target["host"]
 
     tasks = [UserBehavior]

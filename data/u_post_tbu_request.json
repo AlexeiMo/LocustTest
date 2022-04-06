@@ -1,13 +1,1 @@
-{
-  "outgoingAmount": "1",
-  "incomingAmount": "1",
-  "description": "test",
-  "tanValue": "2273720992",
-  "chooseTemplateSelect": null,
-  "saveAsTemplate": false,
-  "templateName": "",
-  "accountIdFrom": 3531,
-  "accountNumberTo": "EUR0003341466170006",
-  "userName": "finance@napoleonentertainment.com",
-  "rateLockInToken": "1fa9a366-24da-463a-bf1e-89d1b7209653"
-}
+{"outgoingAmount": "0.01", "incomingAmount": "0.01", "description": "test", "tanValue": "7976363884", "chooseTemplateSelect": null, "saveAsTemplate": false, "templateName": "", "accountIdFrom": 3555, "accountNumberTo": "DBT49577777", "userName": "user22", "rateLockInToken": "64f6c768-dca7-4e08-be30-09438033357e"}

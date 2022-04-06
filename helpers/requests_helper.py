@@ -15,6 +15,7 @@ def send_get_request(session, url, request_name, filename=None):
         params = None
     with session.get(url, name=request_name, params=params, verify=False,
                      catch_response=True) as response:
+        print(response.content)
         assert_status_code(response)
         if response.content:
             return response.json()
@@ -25,6 +26,7 @@ def send_post_request(session, url, request_name, filename, status_code=200):
     with open(source_file, "rb") as data:
         with session.post(url, name=request_name, data=data, verify=False,
                           catch_response=True) as response:
+            print(response.content)
             assert_status_code(response, status_code)
             if response.content:
                 return response.json()

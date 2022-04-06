@@ -1,11 +1,11 @@
 {
-  "host": "https://api-loadtest-01.ebanq-qa.com",
+  "host": "https://api-loadtest-02.ebanq-qa.com",
   "authorization": {
     "host": "/users/public/v1/auth/signin",
     "user": {
       "email": "",
       "password": "",
-      "user_id": "a0451605-0907-4450-a676-d99f124725b5"
+      "user_id": "f66ee211-3b9f-4a95-b507-da75b6160e17"
     },
     "admin": {
       "email": "",
@@ -228,7 +228,7 @@
     },
     "get_user_transaction_by_id": {
       "endpoint": "/accounts/private/v1/user/transactions/",
-      "transaction_id": "152854",
+      "transaction_id": "429833",
       "filename": "u_get_user_transaction_by_id.json"
     },
     "get_user_transactions": {

@@ -1,12 +1,11 @@
 import os
-from pprint import pprint
 
 from locust import HttpUser, between, task, TaskSet
 import urllib3
 
 from helpers.json_helper import read_json
 from helpers.auth_helper import AuthorizationHelper
-from helpers.requests_helper import send_get_request, send_patch_request, send_post_request
+from helpers.requests_helper import send_get_request, send_post_request
 from helpers.csv_helper import change_tan
 
 
@@ -50,7 +49,7 @@ class UserBehavior(TaskSet):
         send_get_request(self.client, endpoint, name)
 
     @task
-    def     _modules(self):
+    def get_modules(self):
         endpoint = target["user"]["get_modules"]["endpoint"]
         name = "/MODULES"
         send_get_request(self.client, endpoint, name)
@@ -105,14 +104,14 @@ class UserBehavior(TaskSet):
         filename = target["user"]["get_user_transactions"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    @task   # ToDo: 403
+    # @task   # ToDo: Ask developers about it
     def post_cft_request(self):
         endpoint = target["user"]["post_cft_request"]["endpoint"]
         name = "/CFT REQUEST"
         filename = target["user"]["post_cft_request"]["filename"]
         send_post_request(self.client, endpoint, name, filename)
 
-    @task   # ToDo: 403
+    # @task   # ToDo: Ask developers about it
     def post_cft_request_preview(self):
         endpoint = target["user"]["post_cft_request_preview"]["endpoint"]
         name = "/CFT REQUEST PREVIEW"
@@ -180,7 +179,7 @@ class UserBehavior(TaskSet):
         filename = target["user"]["post_user_messages"]["filename"]
         send_post_request(self.client, endpoint, name, filename)
 
-    @task   #ToDO: 400
+    @task
     def get_user_reports_account_export(self):
         endpoint = target["user"]["get_user_reports_account_export"]["endpoint"]
         name = "/USER REPORTS ACCOUNT EXPORT"

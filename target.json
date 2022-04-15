@@ -1,11 +1,11 @@
 {
-  "host": "https://api-loadtest-02.ebanq-qa.com",
+  "host": "https://api-mob4.ebanq-qa.com",
   "authorization": {
     "host": "/users/public/v1/auth/signin",
     "user": {
       "email": "",
       "password": "",
-      "user_id": "f66ee211-3b9f-4a95-b507-da75b6160e17"
+      "user_id": ""
     },
     "admin": {
       "email": "",
@@ -103,7 +103,7 @@
     },
     "get_request_by_id": {
       "endpoint": "/accounts/private/v1/requests/",
-      "request_id": "866"
+      "request_id": "420048"
     },
     "post_owt_request_preview": {
       "endpoint": "/accounts/private/v1/admin/owt-requests/preview/user/",
@@ -228,7 +228,7 @@
     },
     "get_user_transaction_by_id": {
       "endpoint": "/accounts/private/v1/user/transactions/",
-      "transaction_id": "429833",
+      "transaction_id": "429673",
       "filename": "u_get_user_transaction_by_id.json"
     },
     "get_user_transactions": {

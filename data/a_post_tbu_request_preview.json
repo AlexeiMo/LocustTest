@@ -1,9 +1,8 @@
 {
-  "outgoingAmount": "0.01",
-  "incomingAmount": "0.01",
-  "description": "",
-  "accountIdFrom": 3555,
-  "accountNumberTo": "DBT49577777",
-  "userName": "user22",
-  "rateLockInToken": "64f6c768-dca7-4e08-be30-09438033357e"
+  "outgoingAmount":"0.01",
+  "incomingAmount":"0.01",
+  "description":"",
+  "accountIdFrom":3540,
+  "accountNumberTo":"EUR0001235313739001",
+  "userName":"1509"
 }

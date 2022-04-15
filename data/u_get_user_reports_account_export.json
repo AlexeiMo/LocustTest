@@ -1,5 +1,6 @@
 {
   "page[number]": 1,
   "page[size]": 25,
-  "sort": "-statusChangedAt"
+  "sort": "-statusChangedAt",
+  "filters[accountId]": 3536
 }

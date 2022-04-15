@@ -1,5 +1,4 @@
 import os
-from pprint import pprint
 
 from locust import HttpUser, between, task, TaskSet
 import urllib3
@@ -118,7 +117,7 @@ class AdminBehavior(TaskSet):
         filename = target["admin"]["get_reports_interests"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    @task   ## ToDo: seems to be extra data in JSON (maybe JSONdecoder module problems)
+    @task
     def get_system_balance_export(self):
         endpoint = target["admin"]["get_system_balance_export"]["endpoint"]
         name = "/SYSTEM BALANCE EXPORT"
@@ -164,7 +163,7 @@ class AdminBehavior(TaskSet):
         filename = target["admin"]["get_system_overview"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    @task   ## 500
+    @task   ## ToDo: 500
     def patch_request_by_id(self):
         endpoint = target["admin"]["patch_request_by_id"]["endpoint"]
         request_id = target["admin"]["patch_request_by_id"]["request_id"]
@@ -305,14 +304,14 @@ class AdminBehavior(TaskSet):
         filename = target["admin"]["post_messages_send_to_users"]["filename"]
         send_post_request(self.client, endpoint, name, filename)
 
-    @task   ## ToDo: seems to be extra data in JSON (maybe JSONdecoder module problems)
+    @task
     def get_transfer_requests_export(self):
         endpoint = target["admin"]["get_transfer_requests_export"]["endpoint"]
         name = "/TRANSFER REQUESTS EXPORT"
         filename = target["admin"]["get_transfer_requests_export"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    @task   # ToDo: 500
+    @task    # ToDo: 504
     def get_transactions_export(self):
         endpoint = target["admin"]["get_transactions_export"]["endpoint"]
         name = "/TRANSACTIONS EXPORT"
@@ -326,13 +325,13 @@ class AdminBehavior(TaskSet):
         filename = target["admin"]["get_reports_transaction"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    @task   # ToDo: 400
+    @task   # ToDo: 500
     def get_system_manual_transaction_export(self):
         endpoint = target["admin"]["get_system_manual_transaction_export"]["endpoint"]
         name = "/SYSTEM MANUAL TRANSACTION EXPORT"
         send_get_request(self.client, endpoint, name)
 
-    @task   # ToDo: Fix
+    @task
     def post_accounts_csv_import_request(self):
         endpoint = target["admin"]["post_accounts_csv_import_request"]["endpoint"]
         filename = target["admin"]["post_accounts_csv_import_request"]["filename"]

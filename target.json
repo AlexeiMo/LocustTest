@@ -5,7 +5,7 @@
     "user": {
       "email": "",
       "password": "",
-      "user_id": ""
+      "user_id": "ff7bd210-da29-4893-9ad4-6043332491e8"
     },
     "admin": {
       "email": "",
@@ -103,7 +103,7 @@
     },
     "get_request_by_id": {
       "endpoint": "/accounts/private/v1/requests/",
-      "request_id": "420048"
+      "request_id": "419996"
     },
     "post_owt_request_preview": {
       "endpoint": "/accounts/private/v1/admin/owt-requests/preview/user/",
@@ -228,7 +228,7 @@
     },
     "get_user_transaction_by_id": {
       "endpoint": "/accounts/private/v1/user/transactions/",
-      "transaction_id": "429673",
+      "transaction_id": "429573",
       "filename": "u_get_user_transaction_by_id.json"
     },
     "get_user_transactions": {

@@ -23,7 +23,7 @@
     "last_login_at": "2021-06-28T09:32:04Z",
     "last_name": "Test",
     "status": "active",
-    "uid": "a7dd1570-21e4-4380-90fa-487b1d732ad4",
+    "uid": "ff7bd210-da29-4893-9ad4-6043332491e8",
     "user_group_id": null,
     "username": "Test",
     "label": "Test Test (Test)"
@@ -43,5 +43,5 @@
   "bankAddress": "sdfsf",
   "bankLocation": "sdf",
   "bankAbaRtn": "",
-  "rateLockInToken": "8babc931-d04d-4210-b70f-e736dbff50d5"
+  "rateLockInToken": "ff7bd210-da29-4893-9ad4-6043332491e8"
 }

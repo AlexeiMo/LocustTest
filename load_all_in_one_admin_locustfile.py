@@ -311,7 +311,7 @@ class AdminBehavior(TaskSet):
         filename = target["admin"]["get_transfer_requests_export"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    @task    # ToDo: 504
+    # @task    # ToDo: 504
     def get_transactions_export(self):
         endpoint = target["admin"]["get_transactions_export"]["endpoint"]
         name = "/TRANSACTIONS EXPORT"
@@ -325,7 +325,7 @@ class AdminBehavior(TaskSet):
         filename = target["admin"]["get_reports_transaction"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    @task   # ToDo: 500
+    # @task   # ToDo: 500
     def get_system_manual_transaction_export(self):
         endpoint = target["admin"]["get_system_manual_transaction_export"]["endpoint"]
         name = "/SYSTEM MANUAL TRANSACTION EXPORT"

@@ -3,7 +3,7 @@ import os
 from locust import HttpUser, between, task, TaskSet
 import urllib3
 
-from helpers.json_helper import read_json
+from helpers.json_helper import read_json, update_json
 from helpers.auth_helper import AuthorizationHelper
 from helpers.requests_helper import send_get_request, send_patch_request, send_post_request, import_csv_file
 from helpers.csv_helper import create_new_import_requests_file
@@ -60,6 +60,7 @@ class AdminBehavior(TaskSet):
         endpoint = target["admin"]["get_permission"]["endpoint"]
         name = "/PERMISSION"
         filename = target["admin"]["get_permission"]["filename"]
+        update_json(filename, "userId", target["authorization"]["user"]["user_id"])
         send_get_request(self.client, endpoint, name, filename)
 
     @task
@@ -104,11 +105,12 @@ class AdminBehavior(TaskSet):
         filename = target["admin"]["get_short_users"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    @task   ## ToDo: no response, but status code is OK
+    @task
     def get_reports_interests_export(self):
         endpoint = target["admin"]["get_reports_interests_export"]["endpoint"]
         name = "/REPORTS INTERESTS EXPORT"
-        send_get_request(self.client, endpoint, name)
+        filename = target["admin"]["get_reports_interests_export"]["filename"]
+        send_get_request(self.client, endpoint, name, filename)
 
     @task
     def get_reports_interests(self):
@@ -137,7 +139,7 @@ class AdminBehavior(TaskSet):
         filename = target["admin"]["get_system_manual_transaction"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    @task   ## ToDo: no response, but status code is OK
+    @task
     def get_system_maturity_export(self):
         endpoint = target["admin"]["get_system_maturity_export"]["endpoint"]
         name = "/SYSTEM MATURITY EXPORT"
@@ -150,7 +152,7 @@ class AdminBehavior(TaskSet):
         filename = target["admin"]["get_system_maturity"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    @task   ## ToDo: no response, but status code is OK
+    @task
     def get_system_overview_export(self):
         endpoint = target["admin"]["get_system_overview_export"]["endpoint"]
         name = "/SYSTEM OVERVIEW EXPORT"
@@ -163,7 +165,7 @@ class AdminBehavior(TaskSet):
         filename = target["admin"]["get_system_overview"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    @task   ## ToDo: 500
+    # @task   ## ToDo: 500
     def patch_request_by_id(self):
         endpoint = target["admin"]["patch_request_by_id"]["endpoint"]
         request_id = target["admin"]["patch_request_by_id"]["request_id"]
@@ -179,6 +181,8 @@ class AdminBehavior(TaskSet):
         endpoint += user_id
         name = "/OWT REQUEST"
         filename = target["admin"]["post_owt_request"]["filename"]
+        update_json(filename, ["selectedUser", "uid"], target["authorization"]["user"]["user_id"])
+        update_json(filename, "accountIdFrom", target["user_account_ids"]["eur2"])
         send_post_request(self.client, endpoint, name, filename)
 
     @task
@@ -203,6 +207,8 @@ class AdminBehavior(TaskSet):
         endpoint += user_id
         name = "/OWT REQUEST PREVIEW"
         filename = target["admin"]["post_owt_request_preview"]["filename"]
+        update_json(filename, ["selectedUser", "uid"], target["authorization"]["user"]["user_id"])
+        update_json(filename, "accountIdFrom", target["user_account_ids"]["eur2"])
         send_post_request(self.client, endpoint, name, filename)
 
     @task
@@ -212,6 +218,9 @@ class AdminBehavior(TaskSet):
         endpoint += user_id
         name = "/TBA REQUEST"
         filename = target["admin"]["post_tba_request"]["filename"]
+        update_json(filename, ["selectedUser", "uid"], target["authorization"]["user"]["user_id"])
+        update_json(filename, "accountIdFrom", target["user_account_ids"]["eur1"])
+        update_json(filename, "accountIdTo", target["user_account_ids"]["eur2"])
         send_post_request(self.client, endpoint, name, filename)
 
     @task
@@ -221,6 +230,9 @@ class AdminBehavior(TaskSet):
         endpoint += user_id
         name = "/TBA REQUEST PREVIEW"
         filename = target["admin"]["post_tba_request_preview"]["filename"]
+        update_json(filename, ["selectedUser", "uid"], target["authorization"]["user"]["user_id"])
+        update_json(filename, "accountIdFrom", target["user_account_ids"]["eur1"])
+        update_json(filename, "accountIdTo", target["user_account_ids"]["eur2"])
         send_post_request(self.client, endpoint, name, filename)
 
     @task
@@ -230,6 +242,8 @@ class AdminBehavior(TaskSet):
         endpoint += user_id
         name = "/TBU REQUEST"
         filename = target["admin"]["post_tbu_request"]["filename"]
+        update_json(filename, "accountIdFrom", target["user_account_ids"]["eur2"])
+        update_json(filename, "accountNumberTo", target["user_account_ids"]["other_user_eur"])
         send_post_request(self.client, endpoint, name, filename)
 
     @task
@@ -239,6 +253,8 @@ class AdminBehavior(TaskSet):
         endpoint += user_id
         name = "/TBU REQUEST PREVIEW"
         filename = target["admin"]["post_tbu_request_preview"]["filename"]
+        update_json(filename, "accountIdFrom", target["user_account_ids"]["eur2"])
+        update_json(filename, "accountNumberTo", target["user_account_ids"]["other_user_eur"])
         send_post_request(self.client, endpoint, name, filename)
 
     @task
@@ -269,14 +285,14 @@ class AdminBehavior(TaskSet):
         filename = target["admin"]["post_da_request_preview"]["filename"]
         send_post_request(self.client, endpoint, name, filename)
 
-    @task
+    @task ## ToDo: 400
     def post_dra_request(self):
         endpoint = target["admin"]["post_dra_request"]["endpoint"]
         name = "/DRA REQUEST"
         filename = target["admin"]["post_dra_request"]["filename"]
         send_post_request(self.client, endpoint, name, filename)
 
-    @task
+    @task ## ToDo: 400
     def post_dra_request_preview(self):
         endpoint = target["admin"]["post_dra_request_preview"]["endpoint"]
         name = "/DRA REQUEST PREVIEW"
@@ -304,7 +320,7 @@ class AdminBehavior(TaskSet):
         filename = target["admin"]["post_messages_send_to_users"]["filename"]
         send_post_request(self.client, endpoint, name, filename)
 
-    @task
+    # @task     # ToDo: 502
     def get_transfer_requests_export(self):
         endpoint = target["admin"]["get_transfer_requests_export"]["endpoint"]
         name = "/TRANSFER REQUESTS EXPORT"
@@ -325,7 +341,7 @@ class AdminBehavior(TaskSet):
         filename = target["admin"]["get_reports_transaction"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    # @task   # ToDo: 500
+    @task
     def get_system_manual_transaction_export(self):
         endpoint = target["admin"]["get_system_manual_transaction_export"]["endpoint"]
         name = "/SYSTEM MANUAL TRANSACTION EXPORT"

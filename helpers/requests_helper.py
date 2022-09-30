@@ -15,7 +15,7 @@ def send_get_request(session, url, request_name, filename=None):
         params = None
     with session.get(url, name=request_name, params=params, verify=False,
                      catch_response=True) as response:
-        print(response.content)
+        # print(response.content)
         assert_status_code(response)
         if response.content:
             return response.json()

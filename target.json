@@ -1,16 +1,23 @@
 {
-  "host": "https://api-mob4.ebanq-qa.com",
+  "host": "https://api-eg-7663-1.ebanq.de",
   "authorization": {
     "host": "/users/public/v1/auth/signin",
     "user": {
       "email": "",
       "password": "",
-      "user_id": "ff7bd210-da29-4893-9ad4-6043332491e8"
+      "user_id": "40434d62-3808-4e77-aae5-202fcfcf94f4"
     },
     "admin": {
       "email": "",
       "password": ""
     }
+  },
+  "user_account_ids": {
+    "eur1": 11338,
+    "eur2": 11339,
+    "usd": 11340,
+    "gbp": 11341,
+    "other_user_eur": "EUR1488229"
   },
   "admin": {
     "get_accounts": {
@@ -57,7 +64,8 @@
       "filename": "a_get_short_users.json"
     },
     "get_reports_interests_export": {
-      "endpoint": "/reports/private/v1/admin/system/interests/export"
+      "endpoint": "/reports/private/v1/admin/system/interests/export",
+      "filename": "a_get_reports_interests_export.json"
     },
     "get_reports_interests": {
       "endpoint": "/reports/private/v1/admin/system/interests",
@@ -90,7 +98,7 @@
     },
     "patch_request_by_id": {
       "endpoint": "/accounts/private/v1/admin/requests/",
-      "request_id": "861",
+      "request_id": "268528",
       "filename": "a_patch_request_by_id.json"
     },
     "post_owt_request": {
@@ -103,7 +111,7 @@
     },
     "get_request_by_id": {
       "endpoint": "/accounts/private/v1/requests/",
-      "request_id": "419996"
+      "request_id": "268541"
     },
     "post_owt_request_preview": {
       "endpoint": "/accounts/private/v1/admin/owt-requests/preview/user/",

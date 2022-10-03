@@ -8,4 +8,4 @@
 /httpRequests/
 
 # Sensible data
-/env.json
+../env.json

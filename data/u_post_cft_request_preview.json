@@ -1,9 +1,11 @@
 {
-  "outgoingAmount": "11",
+  "accountIdFrom": 11339,
+  "cardIdTo": 222,
+  "chooseTemplateSelect": null,
   "description": "test",
-  "chooseTemplateSelect": "",
+  "incomingAmount": "0.013401",
+  "outgoingAmount": "0.01",
+  "rateLockInToken": "cf9501ec-662b-49e0-889e-40a1182e416d",
   "saveAsTemplate": false,
-  "templateName": "",
-  "cardIdTo": 1,
-  "accountIdFrom": 3596
+  "templateName": ""
 }

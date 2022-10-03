@@ -3,10 +3,9 @@ import os
 from locust import HttpUser, between, task, TaskSet
 import urllib3
 
-from helpers.json_helper import read_json
+from helpers.json_helper import read_json, update_json
 from helpers.auth_helper import AuthorizationHelper
 from helpers.requests_helper import send_get_request, send_post_request
-from helpers.csv_helper import change_tan
 
 
 urllib3.disable_warnings()
@@ -90,6 +89,7 @@ class UserBehavior(TaskSet):
         filename = target["user"]["get_user_requests"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
+    # ToDo: create another way of receiving transaction_id
     @task
     def get_user_transaction_by_id(self):
         endpoint = target["user"]["get_user_transaction_by_id"]["endpoint"]
@@ -106,18 +106,22 @@ class UserBehavior(TaskSet):
         filename = target["user"]["get_user_transactions"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    # @task   # ToDo: Ask developers about it
+    @task
     def post_cft_request(self):
         endpoint = target["user"]["post_cft_request"]["endpoint"]
         name = "/CFT REQUEST"
         filename = target["user"]["post_cft_request"]["filename"]
+        update_json(filename, "cardIdTo", target["user_account_ids"]["card"])
+        update_json(filename, "accountIdFrom", target["user_account_ids"]["eur2"])
         send_post_request(self.client, endpoint, name, filename)
 
-    # @task   # ToDo: Ask developers about it
+    @task
     def post_cft_request_preview(self):
         endpoint = target["user"]["post_cft_request_preview"]["endpoint"]
         name = "/CFT REQUEST PREVIEW"
         filename = target["user"]["post_cft_request_preview"]["filename"]
+        update_json(filename, "cardIdTo", target["user_account_ids"]["card"])
+        update_json(filename, "accountIdFrom", target["user_account_ids"]["eur2"])
         send_post_request(self.client, endpoint, name, filename)
 
     @task
@@ -125,8 +129,7 @@ class UserBehavior(TaskSet):
         endpoint = target["user"]["post_owt_request"]["endpoint"]
         name = "/OWT REQUEST"
         filename = target["user"]["post_owt_request"]["filename"]
-        tan_filename = target["user"]["tans"]["filename"]
-        change_tan(self.client, filename, tan_filename)
+        update_json(filename, "accountIdFrom", target["user_account_ids"]["eur2"])
         send_post_request(self.client, endpoint, name, filename)
 
     @task
@@ -134,8 +137,7 @@ class UserBehavior(TaskSet):
         endpoint = target["user"]["post_owt_request_preview"]["endpoint"]
         name = "/OWT REQUEST PREVIEW"
         filename = target["user"]["post_owt_request_preview"]["filename"]
-        tan_filename = target["user"]["tans"]["filename"]
-        change_tan(self.client, filename, tan_filename)
+        update_json(filename, "accountIdFrom", target["user_account_ids"]["eur2"])
         send_post_request(self.client, endpoint, name, filename)
 
     @task
@@ -143,8 +145,8 @@ class UserBehavior(TaskSet):
         endpoint = target["user"]["post_tba_request"]["endpoint"]
         name = "/TBA REQUEST"
         filename = target["user"]["post_tba_request"]["filename"]
-        tan_filename = target["user"]["tans"]["filename"]
-        change_tan(self.client, filename, tan_filename)
+        update_json(filename, "accountIdFrom", target["user_account_ids"]["eur1"])
+        update_json(filename, "accountIdTo", target["user_account_ids"]["eur2"])
         send_post_request(self.client, endpoint, name, filename)
 
     @task
@@ -152,8 +154,8 @@ class UserBehavior(TaskSet):
         endpoint = target["user"]["post_tba_request_preview"]["endpoint"]
         name = "/TBA REQUEST PREVIEW"
         filename = target["user"]["post_tba_request_preview"]["filename"]
-        tan_filename = target["user"]["tans"]["filename"]
-        change_tan(self.client, filename, tan_filename)
+        update_json(filename, "accountIdFrom", target["user_account_ids"]["eur1"])
+        update_json(filename, "accountIdTo", target["user_account_ids"]["eur2"])
         send_post_request(self.client, endpoint, name, filename)
 
     @task
@@ -161,8 +163,9 @@ class UserBehavior(TaskSet):
         endpoint = target["user"]["post_tbu_request"]["endpoint"]
         name = "/TBU REQUEST"
         filename = target["user"]["post_tbu_request"]["filename"]
-        tan_filename = target["user"]["tans"]["filename"]
-        change_tan(self.client, filename, tan_filename)
+        update_json(filename, "accountIdFrom", target["user_account_ids"]["eur2"])
+        update_json(filename, "accountNumberTo", target["user_account_ids"]["other_user_eur"])
+        update_json(filename, "userName", target["user_account_ids"]["other_user_name"])
         send_post_request(self.client, endpoint, name, filename)
 
     @task
@@ -170,8 +173,9 @@ class UserBehavior(TaskSet):
         endpoint = target["user"]["post_tbu_request_preview"]["endpoint"]
         name = "/TBU REQUEST PREVIEW"
         filename = target["user"]["post_tbu_request_preview"]["filename"]
-        tan_filename = target["user"]["tans"]["filename"]
-        change_tan(self.client, filename, tan_filename)
+        update_json(filename, "accountIdFrom", target["user_account_ids"]["eur2"])
+        update_json(filename, "accountNumberTo", target["user_account_ids"]["other_user_eur"])
+        update_json(filename, "userName", target["user_account_ids"]["other_user_name"])
         send_post_request(self.client, endpoint, name, filename)
 
     @task
@@ -207,8 +211,6 @@ class UserBehavior(TaskSet):
         name = "/USER REPORTS TRANSACTION"
         filename = target["user"]["get_user_reports_transaction"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
-
-    # 1 не хватает
 
 
 class LoadTestUser(HttpUser):

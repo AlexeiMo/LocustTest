@@ -370,8 +370,6 @@ class AdminBehavior(TaskSet):
         filename = create_new_import_requests_file(filename, request_id, status)
         import_csv_file(self.client, endpoint, name, filename)
 
-    # не хватает 4
-
 
 class LoadTestUser(HttpUser):
     wait_time = between(0.6, 0.8)

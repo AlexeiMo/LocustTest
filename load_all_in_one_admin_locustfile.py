@@ -12,6 +12,8 @@ urllib3.disable_warnings()
 
 filepath = os.path.abspath("target.json")
 target = read_json(filepath)
+env_filepath = os.path.abspath("env.json")
+env = read_json(env_filepath)
 
 auth_helper = AuthorizationHelper()
 
@@ -21,8 +23,8 @@ class AdminBehavior(TaskSet):
     def on_start(self):
         auth_helper.authorize(
             session=self.client,
-            email=target["authorization"]["admin"]["email"],
-            password=target["authorization"]["admin"]["password"],
+            email=env["authorization"]["admin"]["email"],
+            password=env["authorization"]["admin"]["password"],
             role="admin"
         )
         self.client.headers.update({"Content-Type": "application/json"})
@@ -60,7 +62,7 @@ class AdminBehavior(TaskSet):
         endpoint = target["admin"]["get_permission"]["endpoint"]
         name = "/PERMISSION"
         filename = target["admin"]["get_permission"]["filename"]
-        update_json(filename, "userId", target["authorization"]["user"]["user_id"])
+        update_json(filename, "userId", env["authorization"]["user"]["user_id"])
         send_get_request(self.client, endpoint, name, filename)
 
     @task
@@ -177,11 +179,11 @@ class AdminBehavior(TaskSet):
     @task
     def post_owt_request(self):
         endpoint = target["admin"]["post_owt_request"]["endpoint"]
-        user_id = target["authorization"]["user"]["user_id"]
+        user_id = env["authorization"]["user"]["user_id"]
         endpoint += user_id
         name = "/OWT REQUEST"
         filename = target["admin"]["post_owt_request"]["filename"]
-        update_json(filename, ["selectedUser", "uid"], target["authorization"]["user"]["user_id"])
+        update_json(filename, ["selectedUser", "uid"], env["authorization"]["user"]["user_id"])
         update_json(filename, "accountIdFrom", target["user_account_ids"]["eur2"])
         send_post_request(self.client, endpoint, name, filename)
 
@@ -203,22 +205,22 @@ class AdminBehavior(TaskSet):
     @task
     def post_owt_request_preview(self):
         endpoint = target["admin"]["post_owt_request_preview"]["endpoint"]
-        user_id = target["authorization"]["user"]["user_id"]
+        user_id = env["authorization"]["user"]["user_id"]
         endpoint += user_id
         name = "/OWT REQUEST PREVIEW"
         filename = target["admin"]["post_owt_request_preview"]["filename"]
-        update_json(filename, ["selectedUser", "uid"], target["authorization"]["user"]["user_id"])
+        update_json(filename, ["selectedUser", "uid"], env["authorization"]["user"]["user_id"])
         update_json(filename, "accountIdFrom", target["user_account_ids"]["eur2"])
         send_post_request(self.client, endpoint, name, filename)
 
     @task
     def post_tba_request(self):
         endpoint = target["admin"]["post_tba_request"]["endpoint"]
-        user_id = target["authorization"]["user"]["user_id"]
+        user_id = env["authorization"]["user"]["user_id"]
         endpoint += user_id
         name = "/TBA REQUEST"
         filename = target["admin"]["post_tba_request"]["filename"]
-        update_json(filename, ["selectedUser", "uid"], target["authorization"]["user"]["user_id"])
+        update_json(filename, ["selectedUser", "uid"], env["authorization"]["user"]["user_id"])
         update_json(filename, "accountIdFrom", target["user_account_ids"]["eur1"])
         update_json(filename, "accountIdTo", target["user_account_ids"]["eur2"])
         send_post_request(self.client, endpoint, name, filename)
@@ -226,11 +228,11 @@ class AdminBehavior(TaskSet):
     @task
     def post_tba_request_preview(self):
         endpoint = target["admin"]["post_tba_request_preview"]["endpoint"]
-        user_id = target["authorization"]["user"]["user_id"]
+        user_id = env["authorization"]["user"]["user_id"]
         endpoint += user_id
         name = "/TBA REQUEST PREVIEW"
         filename = target["admin"]["post_tba_request_preview"]["filename"]
-        update_json(filename, ["selectedUser", "uid"], target["authorization"]["user"]["user_id"])
+        update_json(filename, ["selectedUser", "uid"], env["authorization"]["user"]["user_id"])
         update_json(filename, "accountIdFrom", target["user_account_ids"]["eur1"])
         update_json(filename, "accountIdTo", target["user_account_ids"]["eur2"])
         send_post_request(self.client, endpoint, name, filename)
@@ -238,7 +240,7 @@ class AdminBehavior(TaskSet):
     @task
     def post_tbu_request(self):
         endpoint = target["admin"]["post_tbu_request"]["endpoint"]
-        user_id = target["authorization"]["user"]["user_id"]
+        user_id = env["authorization"]["user"]["user_id"]
         endpoint += user_id
         name = "/TBU REQUEST"
         filename = target["admin"]["post_tbu_request"]["filename"]
@@ -249,7 +251,7 @@ class AdminBehavior(TaskSet):
     @task
     def post_tbu_request_preview(self):
         endpoint = target["admin"]["post_tbu_request_preview"]["endpoint"]
-        user_id = target["authorization"]["user"]["user_id"]
+        user_id = env["authorization"]["user"]["user_id"]
         endpoint += user_id
         name = "/TBU REQUEST PREVIEW"
         filename = target["admin"]["post_tbu_request_preview"]["filename"]

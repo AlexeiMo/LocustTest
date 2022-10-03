@@ -1,17 +1,5 @@
 {
   "host": "https://api-eg-7663-1.ebanq.de",
-  "authorization": {
-    "host": "/users/public/v1/auth/signin",
-    "user": {
-      "email": "",
-      "password": "",
-      "user_id": "40434d62-3808-4e77-aae5-202fcfcf94f4"
-    },
-    "admin": {
-      "email": "",
-      "password": ""
-    }
-  },
   "user_account_ids": {
     "eur1": 11338,
     "eur2": 11339,

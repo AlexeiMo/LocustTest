@@ -13,6 +13,8 @@ urllib3.disable_warnings()
 
 filepath = os.path.abspath("target.json")
 target = read_json(filepath)
+env_filepath = os.path.abspath("env.json")
+env = read_json(env_filepath)
 
 auth_helper = AuthorizationHelper()
 
@@ -22,8 +24,8 @@ class UserBehavior(TaskSet):
     def on_start(self):
         auth_helper.authorize(
             session=self.client,
-            email=target["authorization"]["user"]["email"],
-            password=target["authorization"]["user"]["password"],
+            email=env["authorization"]["user"]["email"],
+            password=env["authorization"]["user"]["password"],
             role="user"
         )
         self.client.headers.update({"Content-Type": "application/json"})

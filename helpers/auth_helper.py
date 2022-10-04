@@ -6,6 +6,8 @@ from helpers.json_helper import read_json
 
 filepath = os.path.abspath("target.json")
 target = read_json(filepath)
+env_filepath = os.path.abspath("env.json")
+env = read_json(env_filepath)
 
 
 class AuthorizationHelper:
@@ -27,7 +29,7 @@ class AuthorizationHelper:
                     "password": password
                 }
             }
-            with session.post(target["authorization"]["host"],
+            with session.post(env["authorization"]["host"],
                               data=json.dumps(data),
                               name=f"/SIGN IN {role.upper()}",
                               verify=False,

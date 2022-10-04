@@ -1,23 +1,13 @@
 {
   "host": "https://api-eg-7663-1.ebanq.de",
-  "authorization": {
-    "host": "/users/public/v1/auth/signin",
-    "user": {
-      "email": "",
-      "password": "",
-      "user_id": "40434d62-3808-4e77-aae5-202fcfcf94f4"
-    },
-    "admin": {
-      "email": "",
-      "password": ""
-    }
-  },
   "user_account_ids": {
     "eur1": 11338,
     "eur2": 11339,
     "usd": 11340,
     "gbp": 11341,
-    "other_user_eur": "EUR1488229"
+    "other_user_eur": "EUR1488229",
+    "card": 222,
+    "other_user_name": "QTQT2"
   },
   "admin": {
     "get_accounts": {
@@ -236,7 +226,7 @@
     },
     "get_user_transaction_by_id": {
       "endpoint": "/accounts/private/v1/user/transactions/",
-      "transaction_id": "429573",
+      "transaction_id": "334455",
       "filename": "u_get_user_transaction_by_id.json"
     },
     "get_user_transactions": {

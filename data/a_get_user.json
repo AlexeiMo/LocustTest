@@ -1,0 +1,7 @@
+{
+  "sort": "-created_at",
+  "filter[role_name]": "client",
+  "filter[query]": "QTQT1",
+  "page": 1,
+  "limit": 25
+}

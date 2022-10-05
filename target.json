@@ -7,7 +7,8 @@
     "gbp": 11341,
     "other_user_eur": "EUR1488229",
     "card": 222,
-    "other_user_name": "QTQT2"
+    "other_user_name": "QTQT2",
+    "revenue": 2
   },
   "admin": {
     "get_accounts": {

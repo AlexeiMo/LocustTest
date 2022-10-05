@@ -1,1 +1,8 @@
-{"outgoingAmount": "0.01", "incomingAmount": "0.01", "description": "", "accountIdFrom": 11339, "accountNumberTo": "EUR1488229", "userName": "QTQT2"}
+{
+  "outgoingAmount": "0.01",
+  "incomingAmount": "0.01",
+  "description": "",
+  "accountIdFrom": 11339,
+  "accountNumberTo": "EUR1488229",
+  "userName": "QTQT2"
+}

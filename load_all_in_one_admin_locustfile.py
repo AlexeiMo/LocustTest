@@ -20,6 +20,8 @@ auth_helper = AuthorizationHelper()
 
 class AdminBehavior(TaskSet):
 
+    user_id = ""
+
     def on_start(self):
         auth_helper.authorize(
             session=self.client,
@@ -28,6 +30,12 @@ class AdminBehavior(TaskSet):
             role="admin"
         )
         self.client.headers.update({"Content-Type": "application/json"})
+
+        # get user_id for user on this host (only for 60 hosts)
+        endpoint = "/users/private/v1/users/"
+        name = "/USER"
+        filename = "a_get_user.json"
+        self.user_id = send_get_request(self.client, endpoint, name, filename)["data"]["items"][0]["uid"]
 
     @task
     def get_accounts(self):
@@ -62,8 +70,7 @@ class AdminBehavior(TaskSet):
         endpoint = target["admin"]["get_permission"]["endpoint"]
         name = "/PERMISSION"
         filename = target["admin"]["get_permission"]["filename"]
-        update_json(filename, "userId", env["authorization"]["user"]["user_id"])
-        send_get_request(self.client, endpoint, name, filename)
+        send_get_request(self.client, endpoint, name, filename, self.user_id)
 
     @task
     def get_requests(self):
@@ -167,7 +174,7 @@ class AdminBehavior(TaskSet):
         filename = target["admin"]["get_system_overview"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    # @task   ## ToDo: 500
+    @task   # ToDo: 500
     def patch_request_by_id(self):
         endpoint = target["admin"]["patch_request_by_id"]["endpoint"]
         request_id = target["admin"]["patch_request_by_id"]["request_id"]
@@ -179,13 +186,12 @@ class AdminBehavior(TaskSet):
     @task
     def post_owt_request(self):
         endpoint = target["admin"]["post_owt_request"]["endpoint"]
-        user_id = env["authorization"]["user"]["user_id"]
+        user_id = self.user_id
         endpoint += user_id
         name = "/OWT REQUEST"
         filename = target["admin"]["post_owt_request"]["filename"]
-        update_json(filename, ["selectedUser", "uid"], env["authorization"]["user"]["user_id"])
-        update_json(filename, "accountIdFrom", target["user_account_ids"]["eur2"])
-        send_post_request(self.client, endpoint, name, filename)
+        # update_json(filename, "accountIdFrom", target["user_account_ids"]["eur2"])
+        send_post_request(self.client, endpoint, name, filename, self.user_id)
 
     @task
     def get_user_sort(self):
@@ -205,58 +211,55 @@ class AdminBehavior(TaskSet):
     @task
     def post_owt_request_preview(self):
         endpoint = target["admin"]["post_owt_request_preview"]["endpoint"]
-        user_id = env["authorization"]["user"]["user_id"]
+        user_id = self.user_id
         endpoint += user_id
         name = "/OWT REQUEST PREVIEW"
         filename = target["admin"]["post_owt_request_preview"]["filename"]
-        update_json(filename, ["selectedUser", "uid"], env["authorization"]["user"]["user_id"])
-        update_json(filename, "accountIdFrom", target["user_account_ids"]["eur2"])
+        # update_json(filename, "accountIdFrom", target["user_account_ids"]["eur2"])
         send_post_request(self.client, endpoint, name, filename)
 
     @task
     def post_tba_request(self):
         endpoint = target["admin"]["post_tba_request"]["endpoint"]
-        user_id = env["authorization"]["user"]["user_id"]
+        user_id = self.user_id
         endpoint += user_id
         name = "/TBA REQUEST"
         filename = target["admin"]["post_tba_request"]["filename"]
-        update_json(filename, ["selectedUser", "uid"], env["authorization"]["user"]["user_id"])
-        update_json(filename, "accountIdFrom", target["user_account_ids"]["eur1"])
-        update_json(filename, "accountIdTo", target["user_account_ids"]["eur2"])
+        # update_json(filename, "accountIdFrom", target["user_account_ids"]["eur1"])
+        # update_json(filename, "accountIdTo", target["user_account_ids"]["eur2"])
         send_post_request(self.client, endpoint, name, filename)
 
     @task
     def post_tba_request_preview(self):
         endpoint = target["admin"]["post_tba_request_preview"]["endpoint"]
-        user_id = env["authorization"]["user"]["user_id"]
+        user_id = self.user_id
         endpoint += user_id
         name = "/TBA REQUEST PREVIEW"
         filename = target["admin"]["post_tba_request_preview"]["filename"]
-        update_json(filename, ["selectedUser", "uid"], env["authorization"]["user"]["user_id"])
-        update_json(filename, "accountIdFrom", target["user_account_ids"]["eur1"])
-        update_json(filename, "accountIdTo", target["user_account_ids"]["eur2"])
+        # update_json(filename, "accountIdFrom", target["user_account_ids"]["eur1"])
+        # update_json(filename, "accountIdTo", target["user_account_ids"]["eur2"])
         send_post_request(self.client, endpoint, name, filename)
 
     @task
     def post_tbu_request(self):
         endpoint = target["admin"]["post_tbu_request"]["endpoint"]
-        user_id = env["authorization"]["user"]["user_id"]
+        user_id = self.user_id
         endpoint += user_id
         name = "/TBU REQUEST"
         filename = target["admin"]["post_tbu_request"]["filename"]
-        update_json(filename, "accountIdFrom", target["user_account_ids"]["eur2"])
-        update_json(filename, "accountNumberTo", target["user_account_ids"]["other_user_eur"])
+        # update_json(filename, "accountIdFrom", target["user_account_ids"]["eur2"])
+        # update_json(filename, "accountNumberTo", target["user_account_ids"]["other_user_eur"])
         send_post_request(self.client, endpoint, name, filename)
 
     @task
     def post_tbu_request_preview(self):
         endpoint = target["admin"]["post_tbu_request_preview"]["endpoint"]
-        user_id = env["authorization"]["user"]["user_id"]
+        user_id = self.user_id
         endpoint += user_id
         name = "/TBU REQUEST PREVIEW"
         filename = target["admin"]["post_tbu_request_preview"]["filename"]
-        update_json(filename, "accountIdFrom", target["user_account_ids"]["eur2"])
-        update_json(filename, "accountNumberTo", target["user_account_ids"]["other_user_eur"])
+        # update_json(filename, "accountIdFrom", target["user_account_ids"]["eur2"])
+        # update_json(filename, "accountNumberTo", target["user_account_ids"]["other_user_eur"])
         send_post_request(self.client, endpoint, name, filename)
 
     @task
@@ -287,18 +290,20 @@ class AdminBehavior(TaskSet):
         filename = target["admin"]["post_da_request_preview"]["filename"]
         send_post_request(self.client, endpoint, name, filename)
 
-    @task ## ToDo: 400
+    @task
     def post_dra_request(self):
         endpoint = target["admin"]["post_dra_request"]["endpoint"]
         name = "/DRA REQUEST"
         filename = target["admin"]["post_dra_request"]["filename"]
+        # update_json(filename, "revenueAccountId", target["user_account_ids"]["revenue"])
         send_post_request(self.client, endpoint, name, filename)
 
-    @task ## ToDo: 400
+    @task
     def post_dra_request_preview(self):
         endpoint = target["admin"]["post_dra_request_preview"]["endpoint"]
         name = "/DRA REQUEST PREVIEW"
         filename = target["admin"]["post_dra_request_preview"]["filename"]
+        # update_json(filename, "revenueAccountId", target["user_account_ids"]["revenue"])
         send_post_request(self.client, endpoint, name, filename)
 
     @task
@@ -322,14 +327,14 @@ class AdminBehavior(TaskSet):
         filename = target["admin"]["post_messages_send_to_users"]["filename"]
         send_post_request(self.client, endpoint, name, filename)
 
-    # @task     # ToDo: 502
+    @task   # ToDo: 502
     def get_transfer_requests_export(self):
         endpoint = target["admin"]["get_transfer_requests_export"]["endpoint"]
         name = "/TRANSFER REQUESTS EXPORT"
         filename = target["admin"]["get_transfer_requests_export"]["filename"]
         send_get_request(self.client, endpoint, name, filename)
 
-    # @task    # ToDo: 504
+    @task   # ToDo: 504
     def get_transactions_export(self):
         endpoint = target["admin"]["get_transactions_export"]["endpoint"]
         name = "/TRANSACTIONS EXPORT"

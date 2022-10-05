@@ -191,7 +191,7 @@ class AdminBehavior(TaskSet):
         name = "/OWT REQUEST"
         filename = target["admin"]["post_owt_request"]["filename"]
         # update_json(filename, "accountIdFrom", target["user_account_ids"]["eur2"])
-        send_post_request(self.client, endpoint, name, filename, self.user_id)
+        send_post_request(self.client, endpoint, name, filename)
 
     @task
     def get_user_sort(self):

@@ -34,10 +34,11 @@ class AuthorizationHelper:
                               name=f"/SIGN IN {role.upper()}",
                               verify=False,
                               catch_response=True) as response:
-                assert_status_code(response)
+                if response.status_code != 200:
+                    exit(f"Authorization was failed with incorrect status code: {response.status_code}")
                 rs_json = response.json()
             if not rs_json["data"]["accessToken"]:
-                response.failure("No authorization token found in response")
+                exit("Authorization was failed: no authorization token found in response")
             else:
                 token = rs_json["data"]["accessToken"]
                 cookie = response.cookies.get("token_signature")
